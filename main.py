@@ -13,7 +13,7 @@ from model import MB_HGCN
 
 from trainer import Trainer
 
-
+#这是对目前最好版本的代码备份
 seed = 2021
 np.random.seed(seed)
 random.seed(seed)
@@ -37,7 +37,9 @@ if __name__ == '__main__':
     parser.add_argument('--dim_qk', type=int, default=32)
     parser.add_argument('--dim_v', type=int, default=64)
     parser.add_argument('--omega', type=float, default=1)
-
+    parser.add_argument('--global_layers', type=int, default=2, help='Number of graph convolution layers for global embedding learning')
+    parser.add_argument('--single_layers', type=int, default=2, help='Number of graph convolution layers for single behavior embedding learning')
+   
     parser.add_argument('--data_name', type=str, default='tmall', help='')
     parser.add_argument('--behaviors', help='', action='append')
     parser.add_argument('--loss_type', type=str, default='bpr', help='')
@@ -55,7 +57,7 @@ if __name__ == '__main__':
     parser.add_argument('--check_point', type=str, default='a_tmall_base.pth', help='')
     parser.add_argument('--model_name', type=str, default='', help='')
     parser.add_argument('--pt_loop', type=int, default=50, help='')
-    parser.add_argument('--device', type=str, default='cuda:0', help='')
+    parser.add_argument('--device', type=str, default='cuda:1', help='')
 
     args = parser.parse_args()
     if args.data_name == 'tmall':
@@ -91,6 +93,7 @@ if __name__ == '__main__':
     trainer.train_model()
     # trainer.evaluate(0, 1, dataset.test_dataset(), dataset.test_interacts, dataset.test_gt_length, args.test_writer)
     logger.info('train end total cost time: {}'.format(time.time() - start))
+
 
 
 
