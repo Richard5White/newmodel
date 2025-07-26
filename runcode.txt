@@ -1,0 +1,3 @@
+scp -r C:\Users\86158\Desktop\专门的model文件\model.py heyuanxin@222.198.156.90:/home/heyuanxin/MB-HGCN-main
+
+scp -r C:\Users\86158\Desktop\专门的model文件\main.py heyuanxin@222.198.156.90:/home/heyuanxin/MB-HGCN-main
